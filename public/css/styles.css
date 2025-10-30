@@ -19,7 +19,7 @@ nav a:hover {
 }
 
 .hero {
-  background-image: url('images/checkerboard.jpg');
+  background-image: url('/public/images/site/checkerboard.jpg');
   background-size: cover;
   background-position: center;
   color: #ffffff;
