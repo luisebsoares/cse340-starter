@@ -4,3 +4,39 @@
 *:after {
   box-sizing: border-box;
 }
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: #0f1b2a; 
+  padding: 10px 0;
+}
+
+nav a:hover {
+  background-color:#a8d8ff;
+  color: #000000;
+}
+
+.hero {
+  background-image: url(images/hero_background.jpg);
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.own-btn {
+  width: 150px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.own-btn:hover {
+  transform: scale(1.05);
+}
+
+body {
+  background-image: url(images/small_check.jpg);
+}
