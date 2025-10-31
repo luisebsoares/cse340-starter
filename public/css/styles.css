@@ -211,11 +211,12 @@ align-items: flex-start;
 }
 
 .upgrades figure {
+  color: var(--dark-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: #356299;
+  background-color: var(--light-color);
   padding: 10px;
   border-radius: 5px;
   text-align: center;
