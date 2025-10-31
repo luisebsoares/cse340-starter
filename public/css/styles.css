@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cambo:ital@0;1&family=Chivo:wght@300;400;600;700&display=swap');
 
+:root {
+  --primary-color: #0f1b2a;
+  --secondary-color: #356299;
+  --accent-color: #c4006c;
+  --light-color: #a8d8ff;
+  --dark-color: #000000;
+  --font-family-sans: 'Chivo', system-ui, sans-serif;
+  --font-family-serif: 'Cambo', serif;
+}
 *,
 *:before,
 *:after {
@@ -31,7 +40,7 @@ img {
 }
 
 .siteName a:hover {
-  color: #00a6d6;
+  color: var(--accent-color);
 }
 
 #tools a {
@@ -43,7 +52,7 @@ img {
 }
 
 #tools a:hover {
-  color: #00a6d6;
+  color: var(--accent-color);
 }
 
 body {
@@ -63,7 +72,7 @@ body {
 
 #wrapper1 {
   background-color: white;
-  border: 1px solid #000000;
+  border: 1px solid #c4006c;
   border-radius: 8px;
   max-width: 960px;
   width: min(960px, 100% - 24px);
@@ -81,7 +90,7 @@ body {
   justify-content: center;
   gap: 10px 14px;
   flex-wrap: wrap;
-  background: #0f1b2a;
+  background: var(--primary-color);
   border-radius: 4px;
 }
 
