@@ -132,16 +132,15 @@ nav a:hover {
 
 .hero-text {
   position: absolute;
+  text-align: left;
     top: 50%;
     left: 8%;
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.8);
     padding: 2vw 3vw;
     border-radius: 8px;
-    border-left: 6px solid #00a6d6;
-    width: 35%;
-    min-width: 200px;
-    max-width: 320px;
+    width: auto;
+    max-width: 90%;
     box-sizing: border-box;
     z-index: 1;
 }
@@ -162,18 +161,20 @@ nav a:hover {
 }
 
 @media (max-width: 600px) {
+
+  .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
   .hero-text {
     position: static;
     transform: none;
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-  }
+    width: auto;
+    margin: 0;
+    text-align: left;
 
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 }
 
