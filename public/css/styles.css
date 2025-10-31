@@ -40,3 +40,10 @@ nav a:hover {
 body {
   background-image: url(images/small_check.jpg);
 }
+
+.upgrades {
+  background-color: lightblue;
+  padding: 20px;
+  border-radius: soft-edges;
+  text-align: center  ;
+}
