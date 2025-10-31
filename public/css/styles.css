@@ -19,6 +19,7 @@ nav a:hover {
 }
 
 .hero {
+  background-image: url('/images/site/checkerboard.jpg');
   background-size: cover;
   background-position: center;
   color: #ffffff;
@@ -43,6 +44,6 @@ body {
 .upgrades {
   background-color: lightblue;
   padding: 20px;
-  border-radius: 10px;
+  border-radius:10px;
   text-align: center  ;
 }
