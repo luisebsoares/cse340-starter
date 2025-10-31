@@ -3,7 +3,7 @@
 :root {
   --primary-color: #0f1b2a;
   --secondary-color: #356299;
-  --accent-color: #c4006c;
+  --accent-color: #50b9e9;
   --light-color: #a8d8ff;
   --dark-color: #000000;
   --font-family-sans: 'Chivo', system-ui, sans-serif;
@@ -24,13 +24,13 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #ff0000;
   padding: 15px 20px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
 
 .siteName a {
+  color: var(--primary-color);
   font: 1em sans-serif;
   font-size: 2.1rem;
   font-weight: 700;
@@ -44,6 +44,7 @@ img {
 }
 
 #tools a {
+  color: var(--primary-color);
   font: 1em sans-serif;
   font-size: 1rem;
   text-decoration: none;
@@ -72,7 +73,7 @@ body {
 
 #wrapper1 {
   background-color: white;
-  border: 1px solid #c4006c;
+  border: 1px solid var(--secondary-color);
   border-radius: 8px;
   max-width: 960px;
   width: min(960px, 100% - 24px);
