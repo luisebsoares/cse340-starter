@@ -27,3 +27,5 @@ ALTER TABLE IF EXISTS public.inventory
     REFERENCES public.classification (classification_id) MATCH SIMPLE
     ON UPDATE CASCADE
     ON DELETE NO ACTION;
+
+    -- this is just a comment :)
