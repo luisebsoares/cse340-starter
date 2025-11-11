@@ -12,7 +12,8 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const pool = require("./database/")
-const utilities = require("./utilities/")
+const utilities = require("./utilities/index")
+const inventoryRoute = require("./routes/inventoryRoute")
 
 
 /* ***********************
