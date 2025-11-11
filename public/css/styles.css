@@ -1,17 +1,25 @@
+/* Import Google Fonts (Cambo = headings, Chivo = body) */
 @import url('https://fonts.googleapis.com/css2?family=Cambo:ital@0;1&family=Chivo:wght@300;400;600;700&display=swap');
 
+/* CSS Variables for consistent theme */
 :root {
   --primary-color: #0f1b2a;
+  /* Dark blue - header/nav background */
   --secondary-color: #356299;
+  /* Medium blue - borders / accents */
   --accent-color: #50b9e9;
+  /* Bright blue - hover, CTA, highlights */
   --light-color: #a8d8ff;
+  /* Light blue - cards, backgrounds */
   --dark-color: #000000;
+  /* Black - text, outlines */
   --font-family-sans: 'Chivo', system-ui, sans-serif;
   --font-family-serif: 'Cambo', serif;
 }
+
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -19,6 +27,49 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* =========================================================
+   PAGE BACKGROUND
+   - Site-wide background styling
+   ========================================================= */
+
+body {
+  background-image: url("/images/site/small_check.jpg");
+  background-repeat: repeat;
+  margin: 0;
+  padding: 40px 0;
+}
+
+@media (max-width: 760px) {
+  body {
+    background-image: none;
+    background-color: #ffffff;
+    padding: 20px 0;
+  }
+}
+
+/* =========================================================
+   MAIN WRAPPER
+   - White content box centered on page
+   ========================================================= */
+
+#wrapper {
+  background-color: #ffffff;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  max-width: 960px;
+  width: min(960px, 100% - 24px);
+  margin: 0 auto;
+  padding: 20px;
+  overflow-x: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================================
+   TOP HEADER BAR
+   - Logo / Site name (left)
+   - Tools / Account links (right)
+   ========================================================= */
 
 #top-header {
   display: flex;
@@ -31,7 +82,7 @@ img {
 
 .siteName a {
   color: var(--primary-color);
-  font: 1em sans-serif;
+  font-family: var(--font-family-sans);
   font-size: 2.1rem;
   font-weight: 700;
   text-decoration: none;
@@ -45,10 +96,10 @@ img {
 
 #tools a {
   color: var(--primary-color);
-  font: 1em sans-serif;
+  font-family: var(--font-family-sans);
   font-size: 1rem;
-  text-decoration: none;
   font-weight: 600;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
@@ -56,32 +107,10 @@ img {
   color: var(--accent-color);
 }
 
-body {
-  background-image: url("/images/site/small_check.jpg");
-  background-repeat: repeat;
-  margin: 0;
-  padding: 40px 0; 
-}
-
-@media (max-width: 760px) {
-  body {
-    background-image: none;
-    background-color: white;
-    padding: 20px 0;
-  }
-}
-
-#wrapper {
-  background-color: white;
-  border: 1px solid var(--secondary-color);
-  border-radius: 8px;
-  max-width: 960px;
-  width: min(960px, 100% - 24px);
-  overflow-x: hidden;
-  margin: 0 auto;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+/* =========================================================
+   MAIN NAVIGATION
+   - Horizontal nav bar with links
+   ========================================================= */
 
 nav {
   background-color: var(--primary-color);
@@ -97,8 +126,7 @@ nav ul {
 
 nav li {
   list-style: none;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding: 1em 0;
 }
 
 nav a {
@@ -108,12 +136,12 @@ nav a {
   text-decoration: none;
   padding: 10px 16px;
   border-radius: 6px;
-  transition: background-color .25s, color .25s;
+  transition: background-color 0.25s, color 0.25s;
 }
 
 nav a:hover {
-  background-color:#a8d8ff;
-  color: #000000;
+  background-color: var(--light-color);
+  color: var(--dark-color);
 }
 
 @media (max-width: 480px) {
@@ -124,21 +152,26 @@ nav a:hover {
 
   .main-nav a {
     padding: 10px 12px;
-    font-size: .95rem;
+    font-size: 0.95rem;
   }
 }
 
+/* =========================================================
+   HERO SECTION
+   - Large promo area with image + call-to-action
+   ========================================================= */
+
 .hero {
-  font: 1em sans-serif;
   position: relative;
   width: 100%;
-  max-height: 420px;
   min-height: 360px;
+  max-height: 420px;
   border-radius: 10px;
   overflow: hidden;
+  font-family: var(--font-family-sans);
 }
 
-.hero >img {
+.hero>img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -148,22 +181,22 @@ nav a:hover {
 }
 
 .hero-text {
-  font-weight: 700;
   position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2vw 3vw;
+  border-radius: 8px;
+  max-width: 90%;
+  font-weight: 700;
   text-align: left;
-    top: 50%;
-    left: 8%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8);
-    padding: 2vw 3vw;
-    border-radius: 8px;
-    width: auto;
-    max-width: 90%;
-    box-sizing: border-box;
-    z-index: 1;
+  z-index: 1;
+  box-sizing: border-box;
 }
 
-.hero-text h2, .hero-text p {
+.hero-text h2,
+.hero-text p {
   font-size: clamp(1.2rem, 1.5vw, 1.5rem);
   line-height: 1.3;
 }
@@ -179,33 +212,107 @@ nav a:hover {
 }
 
 @media (max-width: 600px) {
-
   .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   .hero-text {
     position: static;
     transform: none;
-    width: auto;
     margin: 0;
+    width: auto;
     text-align: left;
-
   }
 }
 
+/* =========================================================
+    VEEHICLE INVENTORY DISPLAY
+   - Inventory list styling
+   ========================================================= */
+
+#inv-display {
+  margin: 20px 0 40px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+#inv-display li {
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid var(--secondary-color, #ccc);
+  border-radius: 10px;
+  padding: 16px 12px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+#inv-display li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  border-color: var(--accent-color, #50b9e9);
+}
+
+#inv-display .namePrice {
+  width: 100%;
+  margin-top: 6px;
+}
+
+#inv-display .namePrice hr {
+  border: 0;
+  border-top: 1px solid #eeeeee;
+  margin: 0 0 6px;
+}
+
+#inv-display .namePrice h2 {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+  font-family: var(--font-family-serif, serif);
+}
+
+#inv-display .namePrice h2 a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+#inv-display .namePrice h2 a:hover {
+  color: var(--accent-color, #50b9e9);
+  text-decoration: none;
+}
+
+#inv-display .namePrice span {
+  display: block;
+  font-family: var(--font-family-sans, system-ui, sans-serif);
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+#inv-display li img {
+  object-fit: fill;
+}
+
+/* =========================================================
+    FEATURES SECTION
+   - Reviews + Upgrades grid area below hero
+   ========================================================= */
+
 .features {
-  font: 1em 'Cambo', serif;
   display: flex;
   gap: 10px;
-align-items: flex-start;
+  align-items: flex-start;
+  font-family: var(--font-family-serif);
 }
 
 .upgrades {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   min-width: 0;
 }
@@ -217,17 +324,17 @@ align-items: flex-start;
 }
 
 .upgrades figure {
-  color: var(--dark-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  text-align: center;
   background-color: var(--light-color);
+  color: var(--dark-color);
   padding: 10px;
   border-radius: 5px;
-  text-align: center;
-  border: 1px solid #000000;
-  transition: scale 0.3s ease;
+  border: 1px solid var(--dark-color);
+  transition: transform 0.3s ease;
 }
 
 .upgrades figure:hover {
@@ -236,7 +343,6 @@ align-items: flex-start;
 
 .upgrades img {
   max-width: 100px;
-  display: block;
   margin: 0 auto;
 }
 
@@ -253,4 +359,19 @@ align-items: flex-start;
   .upgrades {
     order: -1;
   }
+}
+
+/* =========================================================
+   FOOTER SECTION
+   - Example style (add to your HTML as needed)
+   ========================================================= */
+
+footer {
+  padding: 15px 20px;
+  font-family: var(--font-family-sans);
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  text-align: center;
+  border-top: 1px solid var(--secondary-color);
+  margin-top: 20px;
 }
