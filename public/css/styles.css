@@ -71,7 +71,7 @@ body {
   }
 }
 
-#wrapper1 {
+#wrapper {
   background-color: white;
   border: 1px solid var(--secondary-color);
   border-radius: 8px;
@@ -83,22 +83,28 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.main-nav {
-  list-style: none;
-  margin: 0;
-  padding: 10px 12px;
-  display: flex;
-  justify-content: center;
-  gap: 10px 14px;
-  flex-wrap: wrap;
-  background: var(--primary-color);
-  border-radius: 4px;
+nav {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  border-radius: 5px;
 }
 
-.main-nav a {
+nav ul {
+  display: flex;
+  padding: 0 1vw;
+  justify-content: space-around;
+}
+
+nav li {
+  list-style: none;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+nav a {
   display: block;
   font: 600 1rem/1.2 system-ui, sans-serif;
-  color: #fff;
+  color: var(--light-color);
   text-decoration: none;
   padding: 10px 16px;
   border-radius: 6px;
