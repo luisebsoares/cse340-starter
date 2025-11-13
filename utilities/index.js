@@ -97,6 +97,45 @@ Util.buildClassificationGrid = async function(data){
 }
 
 
+/* **************************************
+* Build the vehicle detail view HTML
+* ************************************ */
+Util.buildSingleVehicleDisplay = (vehicle) => {
+  const price = new Intl.NumberFormat("en-US").format(vehicle.inv_price)
+  const miles = new Intl.NumberFormat("en-US").format(vehicle.inv_miles)
+
+  return `
+    <section id="vehicle-display">
+      <div class="vehicle-wrapper">
+
+        <section class="imagePrice">
+          <img 
+            src="${vehicle.inv_image}" 
+            alt="Image of ${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors"
+            id="mainImage"
+          >
+        </section>
+
+        <section class="vehicleDetail">
+          <h2 class="vehicle-title">
+            ${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}
+          </h2>
+
+          <ul id="vehicle-details">
+            <li><h3>Price:</h3> $${price}</li>
+            <li><h3>Description:</h3> ${vehicle.inv_description}</li>
+            <li><h3>Color:</h3> ${vehicle.inv_color}</li>
+            <li><h3>Miles:</h3> ${miles}</li>
+          </ul>
+        </section>
+
+      </div>
+    </section>
+  `
+}
+
+
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

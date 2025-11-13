@@ -19,4 +19,29 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Build vehicle detail view task 1
+ * ************************** */
+invCont.buildVehicleDetail = async function (req, res, next) {
+  const inv_id = req.params.invId
+  let vehicle = await invModel.getInventoryById(inv_id)
+  const htmlData = await utilities.buildSingleVehicleDisplay(vehicle)
+  let nav = await utilities.getNav()
+  const vehicleitle = vehicle.inv_year + vehicle.inv_make + " " + vehicle.inv_model
+  res.render("./inventory/detail", {
+    title: vehicleTitle,
+    nav,
+    message: null,
+    htmlData,
+  })
+}
+
+
+/* ***************************
+ *  Process intentional error task 3
+ * ************************** */
+invCont.throwError = async function (req, res) {
+  throw new Error("This is definetly an intentional error")
+}
+
   module.exports = invCont
