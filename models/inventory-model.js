@@ -28,6 +28,9 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
+/* ***************************
+ *  Get inventory and classification data by inv_id
+ *   * ************************** */
 async function getInventoryById(inv_id) {
   try {
     const data = await pool.query(
