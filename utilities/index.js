@@ -100,38 +100,37 @@ Util.buildClassificationGrid = async function(data){
 /* **************************************
 * Build the detail view HTML
 * ************************************ */
-Util.buildSingleVehicleDisplay = (vehicle) => {
-  const price = new Intl.NumberFormat("en-US").format(vehicle.inv_price)
-  const miles = new Intl.NumberFormat("en-US").format(vehicle.inv_miles)
-
-  return `
-    <section id="vehicle-display">
-      <div class="vehicle-wrapper">
-
-        <section class="imagePrice">
-          <img 
-            src="${vehicle.inv_image}" 
-            alt="Image of ${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors"
-            id="mainImage"
-          >
-        </section>
-
-        <section class="vehicleDetail">
-          <h2 class="vehicle-title">
-            ${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}
-          </h2>
-
-          <ul id="vehicle-details">
-            <li><h3>Price:</h3> $${price}</li>
-            <li><h3>Description:</h3> ${vehicle.inv_description}</li>
-            <li><h3>Color:</h3> ${vehicle.inv_color}</li>
-            <li><h3>Miles:</h3> ${miles}</li>
-          </ul>
-        </section>
-
-      </div>
-    </section>
-  `
+Util.buildSingleVehicleDisplay = async (vehicle) => {
+  let svd = '<section id="vehicle-display">'
+  svd += "<div>"
+  svd += '<section class="imagePrice">'
+  svd +=
+    "<img src='" +
+    vehicle.inv_image +
+    "' alt='Image of " +
+    vehicle.inv_make +
+    " " +
+    vehicle.inv_model +
+    " on cse motors' id='mainImage'>"
+  svd += "</section>"
+  svd += '<section class="vehicleDetail">'
+  svd += "<h3> " + vehicle.inv_make + " " + vehicle.inv_model + " Details</h3>"
+  svd += '<ul id="vehicle-details">'
+  svd +=
+    "<li><h4>Price: $" +
+    new Intl.NumberFormat("en-US").format(vehicle.inv_price) +
+    "</h4></li>"
+  svd += "<li><h4>Description:</h4> " + vehicle.inv_description + "</li>"
+  svd += "<li><h4>Color:</h4> " + vehicle.inv_color + "</li>"
+  svd +=
+    "<li><h4>Miles:</h4> " +
+    new Intl.NumberFormat("en-US").format(vehicle.inv_miles) +
+    "</li>"
+  svd += "</ul>"
+  svd += "</section>"
+  svd += "</div>"
+  svd += "</section>"
+  return svd
 }
 
 
