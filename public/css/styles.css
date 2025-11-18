@@ -382,6 +382,36 @@ nav a:hover {
 }
 
 /* =========================================================
+   REGISTRATION FORM EXTRAS
+   ========================================================= */
+
+.show-password-wrapper {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  margin-top: 4px;
+  }
+
+.toggle-password-btn {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-family-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.toggle-password-btn:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
    FEATURES SECTION
    ========================================================= */
 
