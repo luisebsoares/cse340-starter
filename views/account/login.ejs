@@ -1,0 +1,38 @@
+<% if (title){ %>
+    <h1><%= title %></h1>
+    <%} else {
+        res.redirect('/')
+    } %>
+
+<!-- Flash message if one is sent -->
+<% if (typeof messages==="function" ) { %>
+    <section class="flash-messages">
+        <%- messages() %>
+    </section>
+    <% } %>
+
+        <section class="account-form-wrapper">
+            <form action="/account/login" method="post" class="account-form" novalidate>
+
+                <div class="form-row">
+                    <label for="account_email">Email</label>
+                    <input type="email" id="account_email" name="account_email" placeholder="you@example.com" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="account_password">Password</label>
+                    <input type="password" id="account_password" name="account_password"
+                        placeholder="Enter your password" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Login</button>
+                </div>
+
+            </form>
+
+            <p class="account-helper">
+                Don’t have an account yet?
+                <a href="/account/register">Create an account</a>
+            </p>
+        </section>
