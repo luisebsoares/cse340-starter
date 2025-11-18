@@ -392,6 +392,12 @@ nav a:hover {
   margin-top: 4px;
   }
 
+.password-hint {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--primary-color);
+  margin-top: 4px; }
+
 .toggle-password-btn {
   background-color: var(--primary-color);
   color: #ffffff;
