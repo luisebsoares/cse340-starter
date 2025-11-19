@@ -385,6 +385,13 @@ nav a:hover {
    REGISTRATION FORM EXTRAS
    ========================================================= */
 
+.account-form-wrapper p {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
 .show-password-wrapper {
   text-align: center;
   font-size: 0.85rem;
@@ -393,8 +400,6 @@ nav a:hover {
   }
 
 .password-hint {
-  font-size: 0.85rem;
-  font-style: italic;
   color: var(--primary-color);
   margin-top: 4px; }
 
@@ -416,6 +421,35 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
+
+/* =========================================================
+   INPUT VALIDATION STYLING
+   ========================================================= */
+
+/* Default state */
+.account-form input {
+  border: 1px solid var(--secondary-color);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Invalid input */
+.account-form input:invalid {
+  border-color: #ff4d4d;
+  box-shadow: 0 0 4px rgba(255, 77, 77, 0.5);
+}
+
+/* Valid input */
+.account-form input:valid {
+  border-color: #4caf50;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+}
+
+/* On focus (overrides maybe invalid look) */
+.account-form input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px rgba(80, 185, 233, 0.7);
+  outline: none;
+}
 
 /* =========================================================
    FEATURES SECTION
