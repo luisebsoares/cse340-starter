@@ -5,13 +5,12 @@ const validate = {}
 /*  **********************************
   *  Registration Data Validation Rules
   * ********************************* */
-validate.registationRules = () => {
+validate.registrationRules = () => {
     return [
       // firstname is required and must be string
       body("account_firstname")
         .trim()
         .escape()
-        .notEmpty()
         .isLength({ min: 1 })
         .withMessage("Please provide a first name."), // on error this message is sent.
   
@@ -19,7 +18,6 @@ validate.registationRules = () => {
       body("account_lastname")
         .trim()
         .escape()
-        .notEmpty()
         .isLength({ min: 2 })
         .withMessage("Please provide a last name."), // on error this message is sent.
   
@@ -27,7 +25,6 @@ validate.registationRules = () => {
       body("account_email")
       .trim()
       .escape()
-      .notEmpty()
       .isEmail()
       .normalizeEmail() // refer to validator.js docs
       .withMessage("A valid email is required."),
@@ -35,7 +32,6 @@ validate.registationRules = () => {
       // password is required and must be strong password
       body("account_password")
         .trim()
-        .notEmpty()
         .isStrongPassword({
           minLength: 12,
           minLowercase: 1,
