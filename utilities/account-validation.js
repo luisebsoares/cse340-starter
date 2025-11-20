@@ -7,20 +7,20 @@ const validate = {}
   *  Registration Data Validation Rules
   * ********************************* */
 validate.registrationRules = () => {
-    return [
-      // firstname is required and must be string
-      body("account_firstname")
-        .trim()
-        .escape()
-        .isLength({ min: 1 })
-        .withMessage("Please provide a first name."), // on error this message is sent.
-  
-      // lastname is required and must be string
-      body("account_lastname")
-        .trim()
-        .escape()
-        .isLength({ min: 2 })
-        .withMessage("Please provide a last name."), // on error this message is sent.
+  return [
+    // name is required and must be string
+    body("account_firstname")
+      .trim()
+      .isString()
+      .isLength({ min: 1 })
+      .withMessage("Please provide a first name."), // on error this message is sent.
+
+    // name is required and must be string
+    body("account_lastname")
+      .trim()
+      .isString()
+      .isLength({ min: 1 })
+      .withMessage("Please provide a last name."), // on error this message is sent.
   
         // valid email is required and cannot already exist in the database
       body("account_email")
@@ -72,6 +72,9 @@ validate.checkRegData = async (req, res, next) => {
 }
 
 
+/*  **********************************
+  *  Login Data Validation Rules
+  * ********************************* */
 validate.loginRules = () => {
   return [
     body("account_email")

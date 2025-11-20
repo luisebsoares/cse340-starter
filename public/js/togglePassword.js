@@ -1,7 +1,7 @@
 const pswdBtn = document.querySelector("#pswdBtn");
 
 pswdBtn.addEventListener("click", function () {
-  const pswdInput = document.getElementById("pword");
+  const pswdInput = document.getElementById("password");
   const type = pswdInput.getAttribute("type");
 
   if (type === "password") {
