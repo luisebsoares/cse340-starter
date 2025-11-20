@@ -12,29 +12,18 @@
     <% } %>
 
         <section class="account-form-wrapper">
-            <form action="/account/login" method="post" class="account-form" novalidate>
-
-                <div class="form-row">
-                    <label for="account_email">Email</label>
-                    <input type="email" id="account_email" name="account_email" placeholder="you@example.com" required>
-                </div>
-
-                <div class="form-row">
-                    <label for="account_password">Password</label>
-                    <input type="password" id="account_password" name="account_password"
-                        placeholder="Enter your password" required
+            <form action="/account/login" method="post" class="account-form">
+                <fieldset>
+                    <label for="email">Email Address:</label>
+                    <input type="email" name="account_email" id="email" required value="<%= locals.account_email %>">
+                    <label for="password">Password</label>
+                    <input type="password" name="account_password" id="password" required
                         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
-                        <p class="password-hint">
-                          Password must be at least 12 characters and include 1 capital letter,
-                          1 number, and 1 special character.
-                        </p>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="btn-primary">Login</button>
-                </div>
-
-            </form>
+                    <div><i>Passwords must be minimum of 12 characters and include 1 capital letter, 1 number and 1 special
+                            character.</i></div>
+                    <div id="pswdBtn">Show Password</div>
+                    <button type="submit">Login</button>
+                </fieldset>       </form>
 
             <p class="account-helper">
                 Don’t have an account yet?
