@@ -1,0 +1,131 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } else { %>
+  <% res.redirect("/") %>
+<% } %>
+
+<% if (typeof messages === "function") { %>
+  <section class="flash-messages">
+    <%- messages() %>
+  </section>
+<% } %>
+
+<% if (errors) { %>
+  <ul class="notice">
+    <% errors.array().forEach(err => { %>
+      <li><%= err.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<section id="addInventoryContainer" class="account-form-wrapper">
+  <p>Use this form to add a new vehicle to the inventory. All fields are required.</p>
+
+  <form action="/inv/addInventory" method="post" id="addInventoryForm">
+    <fieldset>
+      <label for="classificationList">Classification</label>
+      <%- classificationSelect %>
+
+      <label for="invMake">Make</label>
+      <input
+        type="text"
+        name="inv_make"
+        id="invMake"
+        required
+        minlength="3"
+        placeholder="e.g., Toyota"
+        value="<%= locals.inv_make || '' %>"
+      >
+
+      <label for="invModel">Model</label>
+      <input
+        type="text"
+        name="inv_model"
+        id="invModel"
+        required
+        minlength="3"
+        placeholder="e.g., Camry"
+        value="<%= locals.inv_model || '' %>"
+      >
+
+      <label for="invDescription">Description</label>
+      <textarea
+        id="invDescription"
+        name="inv_description"
+        required
+        rows="4"
+        placeholder="Briefly describe this vehicle"
+      ><%= locals.inv_description || '' %></textarea>
+
+      <label for="invImage">Image Path</label>
+      <input
+        type="text"
+        name="inv_image"
+        id="invImage"
+        required
+        size="30"
+        value="<%= locals.inv_image || '/images/vehicles/no-image.png' %>"
+      >
+
+      <label for="invThumbnail">Thumbnail Path</label>
+      <input
+        type="text"
+        name="inv_thumbnail"
+        id="invThumbnail"
+        required
+        size="30"
+        value="<%= locals.inv_thumbnail || '/images/vehicles/no-image-tn.png' %>"
+      >
+
+      <label for="invPrice">Price</label>
+      <input
+        type="text"
+        name="inv_price"
+        id="invPrice"
+        required
+        size="10"
+        placeholder="Numbers only (e.g. 25999 or 25999.95)"
+        pattern="^[1-9]\\d*(\\.\\d+)?$"
+        value="<%= locals.inv_price || '' %>"
+      >
+
+      <label for="invYear">Year</label>
+      <input
+        type="text"
+        name="inv_year"
+        id="invYear"
+        required
+        size="10"
+        minlength="4"
+        maxlength="4"
+        placeholder="4-digit year (e.g. 2020)"
+        pattern="^(19|20)\\d{2}$"
+        value="<%= locals.inv_year || '' %>"
+      >
+
+      <label for="invMiles">Miles</label>
+      <input
+        type="text"
+        name="inv_miles"
+        id="invMiles"
+        required
+        size="10"
+        placeholder="Whole number only"
+        pattern="^\\d+$"
+        value="<%= locals.inv_miles || '' %>"
+      >
+
+      <label for="invColor">Color</label>
+      <input
+        type="text"
+        name="inv_color"
+        id="invColor"
+        required
+        placeholder="e.g., Blue"
+        value="<%= locals.inv_color || '' %>"
+      >
+
+      <button type="submit">Add Vehicle</button>
+    </fieldset>
+  </form>
+</section>

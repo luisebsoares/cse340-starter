@@ -4,6 +4,8 @@
         res.redirect('/')
     } %>
 
+    <%- messages() %>
+
 <!-- Flash message if one is sent -->
 <% if (typeof messages==="function" ) { %>
     <section class="flash-messages">
