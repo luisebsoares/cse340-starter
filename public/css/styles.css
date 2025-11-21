@@ -347,13 +347,43 @@ nav a:hover {
   outline: none;
 }
 
-/* Password hint text */
 .account-form i {
   font-size: 0.85rem;
   color: var(--primary-color);
 }
 
-/* Show Password Button (same as register) */
+.account-form textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 6px;
+  font-family: var(--font-family-sans);
+  font-size: 1rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  resize: vertical;
+}
+
+.account-form textarea:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 4px rgba(80, 185, 233, 0.5);
+  outline: none;
+}
+
+.account-form select {
+  padding: 10px 12px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 6px;
+  font-family: var(--font-family-sans);
+  font-size: 1rem;
+  background-color: #ffffff;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.account-form select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 4px rgba(80, 185, 233, 0.5);
+  outline: none;
+}
+
 #pswdBtn {
   text-align: center;
   margin: -4px auto 4px;
@@ -373,7 +403,6 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-/* Submit button */
 .account-form button[type="submit"] {
   margin-top: 10px;
   background-color: var(--primary-color);
@@ -392,7 +421,6 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-/* Link under the form */
 .account-helper {
   text-align: center;
   margin-top: 1.1rem;
@@ -509,29 +537,57 @@ nav a:hover {
    INPUT VALIDATION STYLING
    ========================================================= */
 
-/* Default state */
 .account-form input {
   border: 1px solid var(--secondary-color);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Invalid input */
 .account-form input:invalid {
   border-color: #ff4d4d;
   box-shadow: 0 0 4px rgba(255, 77, 77, 0.5);
 }
 
-/* Valid input */
 .account-form input:valid {
   border-color: #4caf50;
   box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
 }
 
-/* On focus (overrides maybe invalid look) */
 .account-form input:focus {
   border-color: var(--accent-color);
   box-shadow: 0 0 5px rgba(80, 185, 233, 0.7);
   outline: none;
+}
+
+/* =========================================================
+   Inventory Management Action Links
+   ========================================================= */
+
+.boldList {
+  list-style: none;
+  margin-top: 1rem;
+  padding-left: 0;
+}
+
+.boldList li {
+  margin-bottom: 12px;
+}
+
+/* Turn the links into buttons */
+.boldList a {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: #ffffff !important;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.boldList a:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
 }
 
 /* =========================================================
