@@ -734,4 +734,16 @@ footer {
     width: auto;
     object-fit: contain;
   }
+
+  .account-form-wrapper {
+    max-width: 100%;
+    margin: 20px 10px;
+    padding: 20px 16px;
+  }
+
+  .account-form button[type="submit"] {
+    width: 100%;
+    text-align: center;
+  }
+  
 }
