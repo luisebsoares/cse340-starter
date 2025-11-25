@@ -22,8 +22,8 @@
   <p>Use this form to update a vehicle in the inventory.<br>
     <i>All fields are required.</i></p>
 
-  <form action="/inv/editInventory" method="post" class="account-form">
-    <fieldset>
+    <form action="/inv/editInventory" method="post" class="account-form" id="updateForm">
+      <fieldset>
 
       <input type="hidden" name="inv_id" value="<%= locals.inv_id %>">
 
@@ -66,7 +66,10 @@
         <input type="text" name="inv_color" id="invColor" required value="<%= locals.inv_color || '' %>"
           placeholder="e.g., Blue">
 
-        <button type="submit">Update Vehicle</button>
-    </fieldset>
+          <button type="submit" disabled>Update Vehicle</button>
+
+        </fieldset>
   </form>
 </section>
+
+<script src="/js/inv-update.js"></script>

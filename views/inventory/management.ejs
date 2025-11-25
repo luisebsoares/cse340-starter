@@ -18,17 +18,33 @@
                 </ul>
                 <%} %>
 
-<ul class="boldList">
-    <li><a href="/inv/newClassification" title="Click to add a new vihicle classification">Add New Classification</a></li>
-    <li><a href="/inv/newVehicle" title="Click to add a new vehicle">Add New Vehicle</a></li>
-</ul>
-
-<h2>Manage Inventory</h2>
-<p>Choose a classification to see those inventory items.</p>
-<%- classificationSelect %>
-
-<table id="inventoryDisplay"></table>
-
-<noscript>JavaScript must be enabled to use this page.</noscript>
-
-<script src="../../js/inventory.js"></script>
+                <ul class="boldList">
+                    <li>
+                        <a href="/inv/newclassification" title="Click to add a new vehicle classification">
+                            Add New Classification
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/inv/newvehicle" title="Click to add a new vehicle">
+                            Add New Vehicle
+                        </a>
+                    </li>
+                </ul>
+                
+                <section class="account-form-wrapper inventory-management">
+                    <h2>Manage Inventory</h2>
+                    <p>Choose a classification to see those inventory items.</p>
+                
+                    <div class="inventory-filter">
+                        <label for="classificationList">Classification</label>
+                        <%- classificationSelect %>
+                    </div>
+                
+                    <div class="inventory-table-wrapper">
+                        <table id="inventoryDisplay"></table>
+                    </div>
+                
+                    <noscript>JavaScript must be enabled to use this page.</noscript>
+                </section>
+                
+                <script src="../../js/inventory.js"></script>

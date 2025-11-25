@@ -572,7 +572,6 @@ nav a:hover {
   margin-bottom: 12px;
 }
 
-/* Turn the links into buttons */
 .boldList a {
   display: inline-block;
   background-color: var(--primary-color);
@@ -588,6 +587,122 @@ nav a:hover {
 .boldList a:hover {
   background-color: var(--accent-color);
   transform: translateY(-2px);
+}
+
+.inventory-management {
+  margin-top: 1.5rem;
+}
+
+.inventory-management h2 {
+  margin-top: 0;
+  font-family: var(--font-family-serif);
+  color: var(--primary-color);
+}
+
+.inventory-management p {
+  margin-bottom: 1rem;
+  font-family: var(--font-family-sans);
+}
+
+.inventory-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.inventory-filter label {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.inventory-management select {
+  padding: 10px 12px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 6px;
+  font-family: var(--font-family-sans);
+  font-size: 1rem;
+  background-color: #ffffff;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.inventory-management select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 4px rgba(80, 185, 233, 0.5);
+  outline: none;
+}
+
+.inventory-table-wrapper {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-family-sans);
+  font-size: 0.95rem;
+}
+
+#inventoryDisplay thead {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+#inventoryDisplay tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+#inventoryDisplay a {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #ffffff;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+#inventoryDisplay a[title*="update"] {
+  background-color: var(--secondary-color);
+}
+
+#inventoryDisplay a[title*="update"]:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+#inventoryDisplay a[title*="delete"] {
+  background-color: #b3261e;
+}
+
+#inventoryDisplay a[title*="delete"]:hover {
+  background-color: #d93025;
+  transform: translateY(-1px);
+}
+
+button[disabled],
+button:disabled {
+  background-color: #cccccc !important;
+  color: #666666 !important;
+  opacity: 0.6;
+  cursor: not-allowed !important;
+  border: 1px solid #bbbbbb !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+button[disabled]:hover {
+  background-color: #cccccc !important;
+  transform: none !important;
 }
 
 /* =========================================================

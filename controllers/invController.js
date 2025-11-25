@@ -251,6 +251,7 @@ invCont.updateInventory = async function (req, res, next) {
 
   let nav = await utilities.getNav()
 
+
   if (updateResult) {
     const itemName = `${updateResult.inv_make} ${updateResult.inv_model}`
     req.flash("notice", `The ${itemName} was successfully updated.`)
