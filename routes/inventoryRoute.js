@@ -19,7 +19,7 @@ router.get("/broken", utilities.handleErrors(invController.throwError));
 router.get("/", utilities.handleErrors(invController.buildManagementView));
 
 //build add classification view route
-router.get("/newclassification", utilities.handleErrors(invController.buildAddClassificationView));
+router.get("/newClassification", utilities.handleErrors(invController.buildAddClassificationView));
 
 //process add classification
 router.post("/addClassification", invChecks.classificationRule(),
@@ -32,12 +32,23 @@ router.get("/getInventory/:classification_id", utilities.handleErrors(invControl
 
 
 // build add vehicle view route
-router.get("/newvehicle", utilities.handleErrors(invController.buildAddVehicleView));
+router.get("/newVehicle", utilities.handleErrors(invController.buildAddVehicleView));
 
 // process add vehicle route
 router.post("/addInventory", invChecks.newInventoryRules(),
     invChecks.checkInventoryData,
     utilities.handleErrors(invController.addInventory));
 
+    // build edit inventory view route (Unit 5)
+    router.get(
+      "/edit/:inv_id",
+      utilities.handleErrors(invController.editInventoryView)
+    )
+    
+    // process inventory update route
+    router.post(
+      "/editInventory",
+      invChecks.newInventoryRules(), invChecks.checkInventoryData, utilities.handleErrors(invController.updateInventory)
+    )
   
 module.exports = router;
