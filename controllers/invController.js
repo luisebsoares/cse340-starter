@@ -189,7 +189,7 @@ invCont.getInventoryJSON = async (req, res, next) => {
 
 /* ***************************
  *  Build edit inventory view
- *  unit 5, update inventory 
+ *  unit 5, update inventory
  * ************************** */
 invCont.editInventoryView = async function (req, res, next) {
   const inv_id = parseInt(req.params.inv_id)
@@ -214,6 +214,71 @@ invCont.editInventoryView = async function (req, res, next) {
     inv_color: itemData.inv_color,
     classification_id: itemData.classification_id
   })
+}
+
+/* ***************************
+ *  Process inventory update
+ *  unit 5, update inventory
+ * ************************** */
+invCont.updateInventory = async function (req, res, next) {
+  const {
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+    classification_id
+  } = req.body
+
+  const updateResult = await invModel.updateInventory(
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+    classification_id
+  )
+
+  let nav = await utilities.getNav()
+
+  if (updateResult) {
+    const itemName = `${updateResult.inv_make} ${updateResult.inv_model}`
+    req.flash("notice", `The ${itemName} was successfully updated.`)
+    return res.redirect("/inv")
+  } else {
+    const classificationSelect =
+      await utilities.buildClassificationList(classification_id)
+
+    const itemName = `${inv_make} ${inv_model}`
+    req.flash("notice", "Sorry, the update failed.")
+    return res.status(501).render("./inventory/edit-inventory", {
+      title: "Edit " + itemName,
+      nav,
+      classificationSelect,
+      errors: null,
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id
+    })
+  }
 }
 
 module.exports = invCont

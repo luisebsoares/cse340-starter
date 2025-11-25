@@ -25,6 +25,8 @@
   <form action="/inv/editInventory" method="post" class="account-form">
     <fieldset>
 
+      <input type="hidden" name="inv_id" value="<%= locals.inv_id %>">
+
       <label for="classificationList">Classification</label>
       <%- classificationSelect %>
 
