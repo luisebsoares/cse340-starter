@@ -19,7 +19,8 @@ router.post(
   utilities.handleErrors(accountController.registerAccount)
 )
 
-// Process the login 
+// Process the login unit 4
+// modified login process activity unit 5
 router.post(
   "/login",
   regValidate.loginRules(),
