@@ -26,10 +26,15 @@ router.post("/addClassification", invChecks.classificationRule(),
     invChecks.checkClassificationData,
     utilities.handleErrors(invController.addClassification));
 
+//get inventory for AJAX route
+//unit 5 select inv item activity
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
+
 // build add vehicle view route
 router.get("/newvehicle", utilities.handleErrors(invController.buildAddVehicleView));
 
-// process add vehicle rouute
+// process add vehicle route
 router.post("/addInventory", invChecks.newInventoryRules(),
     invChecks.checkInventoryData,
     utilities.handleErrors(invController.addInventory));
