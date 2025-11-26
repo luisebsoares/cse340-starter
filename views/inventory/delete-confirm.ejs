@@ -1,0 +1,47 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } else { %>
+    <% res.redirect("/") %>
+  <% } %>
+  
+  <% if (typeof messages === "function") { %>
+    <section class="flash-messages">
+      <%- messages() %>
+    </section>
+  <% } %>
+  
+  <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(err => { %>
+        <li><%= err.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+<section class="account-form-wrapper">
+<p>Confirm Vehicle Deletion<br>
+<i>This action is permanent and cannot be undone.</i>
+</p>
+
+<form action="/inv/deleteInventory" method="post" class="account-form">
+<fieldset>
+                                    
+<input type="hidden" name="inv_id" value="<%= locals.inv_id %>">
+
+<label for="invMake">Make</label>
+<input readonly type="text" id="invMake" value="<%= locals.inv_make %>">
+                                    
+<label for="invModel">Model</label>
+<input readonly type="text" id="invModel" value="<%= locals.inv_model %>">
+                                    
+<label for="invYear">Year</label>
+<input readonly type="number" id="invYear" value="<%= locals.inv_year %>">
+                                    
+<label for="invPrice">Price</label>
+<input readonly type="number" id="invPrice" value="<%= locals.inv_price %>">
+                                    
+<button type="submit" class="delete-btn">Delete</button>
+                                    
+</fieldset>
+</form>
+</section>

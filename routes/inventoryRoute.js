@@ -39,16 +39,16 @@ router.post("/addInventory", invChecks.newInventoryRules(),
     invChecks.checkInventoryData,
     utilities.handleErrors(invController.addInventory));
 
-    // build edit inventory view route (Unit 5)
-    router.get(
-      "/edit/:inv_id",
-      utilities.handleErrors(invController.editInventoryView)
-    )
+// build edit inventory view route (Unit 5)
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView))
     
-    // process inventory update route
-    router.post(
-      "/editInventory",
-      invChecks.newInventoryRules(), invChecks.checkInventoryData, utilities.handleErrors(invController.updateInventory)
-    )
-  
+// process inventory update route
+router.post("/editInventory", invChecks.newInventoryRules(), invChecks.checkInventoryData, utilities.handleErrors(invController.updateInventory))
+
+// delete confirmation view route
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteInventoryView))
+
+// process inventory delete route
+router.post("/deleteInventory", utilities.handleErrors(invController.deleteInventory))
+
 module.exports = router;
