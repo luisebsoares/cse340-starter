@@ -1,0 +1,62 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } else { %>
+    <% res.redirect("/") %>
+  <% } %>
+  
+  <% if (typeof messages === "function") { %>
+    <section class="flash-messages">
+      <%- messages() %>
+    </section>
+  <% } %>
+  
+  <% if (errors && errors.array && errors.array().length > 0) { %>
+    <ul class="notice">
+      <% errors.array().forEach(err => { %>
+        <li><%= err.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  
+  <section class="account-form-wrapper">
+    <h2>Update Account Information</h2>
+    <form action="/account/update" method="post" class="account-form">
+      <fieldset>
+        <input type="hidden" name="account_id" value="<%= locals.account_id %>">
+  
+        <label for="account_firstname">First Name</label>
+        <input type="text" id="account_firstname" name="account_firstname"
+               required
+               value="<%= locals.account_firstname || '' %>">
+  
+        <label for="account_lastname">Last Name</label>
+        <input type="text" id="account_lastname" name="account_lastname"
+               required
+               value="<%= locals.account_lastname || '' %>">
+  
+        <label for="account_email">Email</label>
+        <input type="email" id="account_email" name="account_email"
+               required
+               value="<%= locals.account_email || '' %>">
+  
+        <button type="submit">Update Account</button>
+      </fieldset>
+    </form>
+  </section>
+  
+  <section class="account-form-wrapper">
+    <h2>Change Password</h2>
+    <p>Your new password must meet the site password requirements.</p>
+  
+    <form action="/account/update-password" method="post" class="account-form">
+      <fieldset>
+        <input type="hidden" name="account_id" value="<%= locals.account_id %>">
+  
+        <label for="account_password">New Password</label>
+        <input type="password" id="account_password" name="account_password"
+               required>
+  
+        <button type="submit">Change Password</button>
+      </fieldset>
+    </form>
+  </section>
