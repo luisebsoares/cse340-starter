@@ -6,18 +6,35 @@ const invCont = {}
 
 /* ***************************
  *  Build inventory by classification view
+ *  updated in week 5, display message if no vehicles found
+ *  in classification
  * ************************** */
 invCont.buildByClassificationId = async function (req, res, next) {
-  const classification_id = req.params.classificationId
-  const data = await invModel.getInventoryByClassificationId(classification_id)
-  const grid = await utilities.buildClassificationGrid(data)
-  let nav = await utilities.getNav()
-  const className = data[0].classification_name
-  res.render("./inventory/classification", {
-    title: className + " vehicles",
-    nav,
-    grid,
-  })
+  try {
+    const classification_id = req.params.classificationId
+    const data = await invModel.getInventoryByClassificationId(classification_id)
+    let nav = await utilities.getNav()
+
+    // get classification name from DB
+    const classData = await invModel.getClassificationById(classification_id)
+    const className = classData.classification_name
+
+    let grid
+
+    if (data && data.length > 0) {
+      grid = await utilities.buildClassificationGrid(data)
+    } else {
+      grid = `<p class="notice">There are currently no vehicles in the ${className} classification.</p>`
+    }
+
+    res.render("./inventory/classification", {
+      title: `${className} Vehicles`,
+      nav,
+      grid
+    })
+  } catch (error) {
+    next(error)
+  }
 }
 
 /* ***************************
@@ -297,7 +314,6 @@ invCont.deleteInventoryView = async function (req, res, next) {
   res.render("./inventory/delete-confirm", {
     title: "Delete " + itemName,
     nav,
-    classificationSelect: classificationSelect,
     errors: null,
     inv_id: itemData.inv_id,
     inv_make: itemData.inv_make,
