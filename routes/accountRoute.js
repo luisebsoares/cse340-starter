@@ -21,7 +21,7 @@ router.post("/login", regValidate.loginRules(), regValidate.checkLoginData,
   utilities.handleErrors(accountController.accountLogin))
 
 // deliver account management view unit 5
-router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildManagement))
+router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement))
 
 // Deliver account update view
 router.get("/update/:account_id", utilities.checkLogin,
@@ -35,5 +35,7 @@ router.post("/update", utilities.checkLogin, regValidate.updateAccountRules(),
 router.post("/update-password", utilities.checkLogin, regValidate.updatePasswordRules(),
   regValidate.checkPasswordData,utilities.handleErrors(accountController.updatePassword))
 
+// Process logout request
+router.get("/logout", utilities.handleErrors(accountController.logout))
 
 module.exports = router
