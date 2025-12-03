@@ -124,7 +124,7 @@ Util.buildClassificationList = async function (classification_id = null) {
 /* **************************************
 * Build the detail view HTML
 * ************************************ */
-Util.buildSingleVehicleDisplay = async (vehicle) => {
+Util.buildSingleVehicleDisplay = async (vehicle, isFavorite = false) => {
   let svd = '<section id="vehicle-display">'
   svd += "<div>"
   svd += '<section class="imagePrice">'
@@ -135,7 +135,7 @@ Util.buildSingleVehicleDisplay = async (vehicle) => {
     vehicle.inv_make +
     " " +
     vehicle.inv_model +
-    " on cse motors' id='mainImage'>"
+    " on CSE Motors' id='mainImage'>"
   svd += "</section>"
   svd += '<section class="vehicleDetail">'
   svd += "<h3> " + vehicle.inv_make + " " + vehicle.inv_model + " Details</h3>"
@@ -144,18 +144,42 @@ Util.buildSingleVehicleDisplay = async (vehicle) => {
     "<li><h4>Price: $" +
     new Intl.NumberFormat("en-US").format(vehicle.inv_price) +
     "</h4></li>"
-  svd += "<li><h4>Description:</h4> " + vehicle.inv_description + "</li>"
-  svd += "<li><h4>Color:</h4> " + vehicle.inv_color + "</li>"
-  svd +=
-    "<li><h4>Miles:</h4> " +
+  svd += "<li><strong>Year:</strong> " + vehicle.inv_year + "</li>"
+  svd += "<li><strong>Make:</strong> " + vehicle.inv_make + "</li>"
+  svd += "<li><strong>Model:</strong> " + vehicle.inv_model + "</li>"
+  svd += "<li><strong>Color:</strong> " + vehicle.inv_color + "</li>"
+  svd += "<li><strong>Miles:</strong> " +
     new Intl.NumberFormat("en-US").format(vehicle.inv_miles) +
     "</li>"
+  svd += "<li><strong>Description:</strong> " + vehicle.inv_description + "</li>"
   svd += "</ul>"
+
+  // My Garage actions
+  svd += '<div class="garage-actions">'
+  if (isFavorite) {
+    svd += `
+      <form action="/garage/remove" method="post" class="garage-form">
+        <input type="hidden" name="inv_id" value="${vehicle.inv_id}">
+        <input type="hidden" name="redirectTo" value="/inv/detail/${vehicle.inv_id}">
+        <button type="submit">Remove from My Garage</button>
+      </form>
+    `
+  } else {
+    svd += `
+      <form action="/garage/add" method="post" class="garage-form">
+        <input type="hidden" name="inv_id" value="${vehicle.inv_id}">
+        <button type="submit">Add to My Garage</button>
+      </form>
+    `
+  }
+  svd += "</div>"
+
   svd += "</section>"
   svd += "</div>"
   svd += "</section>"
   return svd
 }
+
 
 
 /* ****************************************

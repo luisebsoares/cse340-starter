@@ -77,17 +77,27 @@ body {
   color: var(--accent-color);
 }
 
-#tools a {
-  color: var(--primary-color);
+#tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-family-sans);
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.3s ease;
+}
+
+#tools a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background-color: transparent;
 }
 
 #tools a:hover {
-  color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: #ffffff;
+  border-color: var(--accent-color);
 }
 
 /* =========================================================
@@ -293,6 +303,122 @@ nav a:hover {
   background-color: #f5f5f5;
 }
 
+.garage-actions {
+  margin-top: 1rem;
+}
+
+.garage-form {
+  display: inline-block;
+}
+
+.garage-form button {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.garage-form button:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   MY GARAGE PAGE
+   ========================================================= */
+
+.garage-wrapper {
+  margin-top: 1.5rem;
+  font-family: var(--font-family-sans);
+}
+
+.garage-wrapper p {
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.garage-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.garage-item {
+  display: flex;
+  gap: 0.85rem;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--secondary-color);
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.garage-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.garage-item img {
+  width: 120px;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.garage-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.garage-info h2 {
+  margin: 0 0 4px;
+  font-family: var(--font-family-serif);
+  font-size: 1.1rem;
+}
+
+.garage-info h2 a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.garage-info h2 a:hover {
+  color: var(--accent-color);
+}
+
+.garage-price {
+  margin: 0 0 8px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.garage-remove-form button {
+  background-color: #b3261e;
+  color: #ffffff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.garage-remove-form button:hover {
+  background-color: #d93025;
+  transform: translateY(-2px);
+}
 
 /* =========================================================
    ACCOUNT LOGIN FORM STYLING
@@ -860,5 +986,14 @@ footer {
     width: 100%;
     text-align: center;
   }
+
+  .garage-list {
+    grid-template-columns: 1fr;
+  }
+
+  .garage-item {
+    flex-direction: row;
+  }
+
   
 }

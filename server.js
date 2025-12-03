@@ -18,6 +18,7 @@ const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const garageRoute = require("./routes/garageRoute")
 
 
 
@@ -72,6 +73,10 @@ app.use("/inv", inventoryRoute)
 
 //Account routes
 app.use("/account", accountRoute)
+
+// Garage routes
+app.use("/garage", garageRoute)
+
 
 
 // File Not Found Route - must be last route in list

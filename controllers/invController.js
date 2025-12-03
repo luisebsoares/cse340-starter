@@ -1,6 +1,8 @@
 const { parse } = require("dotenv")
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities")
+const garageModel = require("../models/garage-model")
+
 
 const invCont = {}
 
@@ -43,10 +45,20 @@ invCont.buildByClassificationId = async function (req, res, next) {
 invCont.buildVehicleDetail = async function (req, res, next) {
   const invId = req.params.invId
   let vehicle = await invModel.getInventoryById(invId)
-  const htmlData = await utilities.buildSingleVehicleDisplay(vehicle)
+
+  let isFavorite = false
+  if (res.locals.loggedin && res.locals.accountData) {
+    isFavorite = await garageModel.isFavorite(
+      res.locals.accountData.account_id,
+      parseInt(invId)
+    )
+  }
+
+  const htmlData = await utilities.buildSingleVehicleDisplay(vehicle, isFavorite)
   let nav = await utilities.getNav()
   const vehicleTitle =
     vehicle.inv_year + " " + vehicle.inv_make + " " + vehicle.inv_model
+
   res.render("./inventory/detail", {
     title: vehicleTitle,
     nav,
@@ -54,6 +66,7 @@ invCont.buildVehicleDetail = async function (req, res, next) {
     htmlData,
   })
 }
+
 
 /* ***************************
  *  Process intentional error
